@@ -1,18 +1,39 @@
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./SupportPage.css";
 // import "./SupportPage.css";
 
 export default function SupportPage() {
   const [showLogin, setShowLogin] = useState(false);
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(true);
   const articles = [
     "We're Moving to a New Support Platform",
     "How to use the Forgot Password Feature via Mobile Number",
     "How to Protect Your Garena Account",
     "How to use the Forgot Password Feature with Verified Email",
   ];
+ useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
+  if (loading) {
+    return (
+      <div className="loader-container">
+        <div className="loader-disc">
+        <p className="disclaimer">
+  ⚠️ This project is intended for educational and learning purposes only.
+  It is designed to demonstrate programming concepts and should be used
+  responsibly and ethically. The developer is not responsible for any
+  misuse of this software.
+</p>
+</div>
+        <div className="loader"></div>
+      </div>
+    );
+  }
   return (
 
     <div className="support-page">
